@@ -1,4 +1,4 @@
-# my-awesome-bot
+# userbot
 
 MTCute powered Telegram bot
 
