@@ -1,0 +1,41 @@
+{
+    "name": "my-awesome-bot",
+    "license": "MIT",
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "prepare": "husky || true",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "start": "dotenv -- tsc-watch --onSuccess \"node dist/app.js\"",
+        "distribute": "pnpm build-ts && node dist/app.js",
+        "build-ts": "tsc --skipLibCheck",
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@mtcute/crypto-node": "^0.12.0",
+        "@mtcute/dispatcher": "^0.12.0",
+        "@mtcute/node": "^0.12.0",
+        "@typegoose/typegoose": "^12.4.0",
+        "dotenv": "^16.4.5",
+        "envalid": "^8.0.0",
+        "mongoose": "^8.4.0",
+        "tsc-watch": "^6.2.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.12.12",
+        "@typescript-eslint/eslint-plugin": "^7.9.0",
+        "@typescript-eslint/parser": "^7.9.0",
+        "eslint": "^9.3.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.6.1",
+        "eslint-plugin-ascii": "^1.0.0",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-simple-import-sort": "^12.1.0",
+        "husky": "^9.0.11",
+        "lint-staged": "^15.2.2",
+        "prettier": "^3.2.5",
+        "typescript": "^5.4.5"
+    }
+}
