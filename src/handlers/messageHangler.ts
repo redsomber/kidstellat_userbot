@@ -31,6 +31,9 @@ export async function handleNewMessage(msg: MessageContext) {
                 { word: { $regex: keywordRegex } },
                 { $inc: { catch_count: 1 } }
             )
+        } else {
+            console.log('No keyword matched.')
+            return // Early return if matchedKeyword is null
         }
 
         await findOrCreateUser({
