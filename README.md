@@ -6,9 +6,9 @@ MTCute powered Telegram bot
 
 ```bash
 pnpm install --frozen-lockfile
-cp .env.example .env 
+cp .env.example .env
 # edit .env
 pnpm start
 ```
 
-*generated with @mtcute/create-bot*
+_generated with @mtcute/create-bot_
