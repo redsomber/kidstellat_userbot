@@ -8,7 +8,7 @@
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
         "format": "prettier --write \"src/**/*.ts\"",
-        "start": "dotenv -- tsc-watch --onSuccess \"node dist/app.js\"",
+        "start": "tsc-watch --skipLibCheck --onSuccess \"node dist/app.js\"",
         "distribute": "pnpm build-ts && node dist/app.js",
         "build-ts": "tsc --skipLibCheck",
         "build": "tsc"

@@ -2,7 +2,8 @@ export const messagePattern = (
     chat_title: string | null,
     chat_username: string | null,
     text: string,
-    username: string | null
+    username: string | null,
+    keyword: string | null
 ) => {
     return `!!Поймано сообщение!!
 Чат: ${chat_title}
@@ -11,5 +12,7 @@ export const messagePattern = (
 От: @${username}
 Сообщение: 
 ${text}
+
+Ключ: ${keyword}
 `
 }

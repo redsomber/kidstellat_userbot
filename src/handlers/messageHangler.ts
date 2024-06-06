@@ -38,6 +38,7 @@ export async function handleNewMessage(msg: MessageContext) {
             username: msg.sender.username,
             firstName: msg.sender.firstName,
             lastName: msg.sender.lastName,
+            firstContact: msg.chat.id,
         })
 
         await findOrCreateGroup({
@@ -59,7 +60,8 @@ export async function handleNewMessage(msg: MessageContext) {
             msg.chat.title,
             msg.chat.username,
             msg.text,
-            msg.sender.username
+            msg.sender.username,
+            matchedKeyword
         )
         for (const recipient of recipients) {
             try {

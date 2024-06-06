@@ -20,15 +20,19 @@ export class User {
 
     @prop({ required: true, default: 0 })
     catchCount!: number
+
+    @prop({ required: false, type: Number, default: null })
+    firstContact?: number
 }
 
 const UserModel = getModelForClass(User)
 
 export function findOrCreateUser(userData: UserData) {
-    const { user_id, username, firstName, lastName } = userData
+    const { user_id, username, firstName, lastName, firstContact } = userData
     return UserModel.findOneAndUpdate(
         { user_id },
         {
+            $setOnInsert: { firstContact },  // Only set firstContact if inserting
             $set: { username, firstName, lastName },
             $inc: { catchCount: 1 },
         },
