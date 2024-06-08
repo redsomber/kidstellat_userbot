@@ -28,8 +28,4 @@ export default async function onNewMessage() {
     dp.removeUpdateHandler(handler)
     dp.addUpdateHandler(handler)
 
-    // setTimeout(() => {
-    //     dp.removeUpdateHandler(handler)
-    //     console.log('Message handler removed after 10 seconds')
-    // }, 10000)
 }

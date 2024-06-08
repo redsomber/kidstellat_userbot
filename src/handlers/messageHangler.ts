@@ -2,9 +2,7 @@ import { MessageContext } from '@mtcute/dispatcher'
 import { findOrCreateUser } from '../models/User.js'
 import { findOrCreateGroup } from '../models/Group.js'
 import { logUserMessage } from '../models/Message.js'
-import { messagePattern } from '../helpers/messagePattern.js'
 import { fetchKeywordsAndCreateRegex } from '../helpers/regexFilter.js'
-import { RecipientModel } from '../models/Recipient.js'
 import { KeywordModel } from '../models/Keyword.js'
 
 function delay(ms: number) {
@@ -56,26 +54,6 @@ export async function handleNewMessage(msg: MessageContext) {
             text: msg.text,
             keyword: matchedKeyword,
         })
-
-        const recipients = await RecipientModel.find().select('user_id -_id')
-
-        const messageText = messagePattern(
-            msg.chat.title,
-            msg.chat.username,
-            msg.text,
-            msg.sender.username,
-            matchedKeyword
-        )
-        for (const recipient of recipients) {
-            try {
-                await msg.client.sendText(recipient.user_id, messageText)
-            } catch {
-                console.error(
-                    `Failed to send message to user ${recipient.user_id}`
-                )
-            }
-            await delay(300)
-        }
     } catch (error) {
         console.error('Failed to handle new message:', error)
     }
